@@ -1,0 +1,151 @@
+[{
+    "_id":"1",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "Está permitido en la vía: ",
+    "images": [],
+    "alternativas": [
+        "Recoger o dejar pasajeros o carga en cualquier lugar",
+        "Dejar animales sueltos o situarlos de forma tal que obstaculicen solo un poco el tránsito",
+        "Recoger o dejar pasajeros en lugares autorizados",
+        " Ejercer el comercio ambulatorio o estacionario"
+    ],
+    "respuesta": "c"
+},
+{
+    "_id":"2",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "Respecto de los dispositivos de control o regulación del tránsito:",
+    "images": [],
+    "alternativas": [
+        "Solo los peatones están obligados a su obediencia",
+        "Los conductores y los peatones están obligados a su obediencia, salvo instrucción de la Policía Nacional del Perú asignada al tránsito que indique lo contrario",
+        "Solo los conductores están obligados a su obediencia",
+        "Los conductores están obligados a su obediencia, aun cuando la Policía Nacional del Perú asignada al tránsito pueda indicar lo contrario"
+    ],
+    "respuesta": "b"
+},
+{
+    "_id":"3",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "La señal vertical reglamentaria R-6 ¿prohibido voltear a la izquierda¿, significa  que",
+    "images": [],
+    "alternativas": [
+        "Está prohibido voltear a la izquierda y, por lo tanto también está prohibido el giro en U.",
+        "Está prohibido voltear a la izquierda, sin embargo, está permitido el giro en U.",
+        "El único sentido de desplazamiento es continuar de frente.",
+        "Ninguna de las alternativas es correcta"
+    ],
+    "respuesta": "a"
+},
+{
+    "_id":"4",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "La señal vertical reglamentaria R-3 significa  que",
+    "images": ["static/image/img4.png"],
+    "alternativas": [
+        "Nos acercamos a una zona restringida al tránsito",
+        "Está permitido adelantar vehículos",
+        "El único sentido de desplazamiento es continuar de frente.",
+        "Ninguna de las alternativas es correcta"
+    ],
+    "respuesta": "c"
+},
+{
+    "_id":"5",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "En  las  vías,  las  marcas  en  el  pavimento  que  son  del  tipo  central discontinua y de color amarillo significan que:",
+    "images": [],
+    "alternativas": [
+        "Está permitido cruzar al otro carril para el adelantamiento vehicular, si es que es seguro hacerlo",
+        "No está permitido cruzar al otro carril para el adelantamiento vehicular",
+        "Se está reduciendo el ancho de la calzada de la vía por donde se circula",
+        "Se está frente a un lugar de cruce peatonal."
+    ],
+    "respuesta": "a"
+},
+{
+    "_id":"6",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "El color ámbar o amarillo del semáforo significa que:",
+    "images": [],
+    "alternativas": [
+        "Los vehículos deben avanzar.",
+        "Los vehículos deben detenerse.",
+        "Los vehículos deben acelerar la marcha.",
+        "Los vehículos deben detenerse antes de ingresar a la intersección si su velocidad y ubicación lo permiten; de lo contrario, deberán cruzar y despejar la intersección."
+    ],
+    "respuesta": "d"
+},
+{
+    "_id":"7",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "Los colores del semáforo tienen el siguiente significado: rojo: _____  ; ámbar o amarillo:   _____; verde:   ____",
+    "images": [],
+    "alternativas": [
+        "Detención - prevención - paso.",
+        "Detención -paso con prevención -circulación rápida",
+        "Disminución de la velocidad -prevención -paso rápido.",
+        "Ninguna de las alternativas es correcta"
+    ],
+    "respuesta": "a"
+},
+{
+    "_id":"8",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "¿Qué indica una flecha verde en un semáforo vehicular?",
+    "images": [],
+    "alternativas": [
+        "Se puede continuar con precaución únicamente en la dirección de la flecha y desde el carril que esta flecha controla",
+        "No está permitida la circulación en el sentido que indica la flecha.",
+        "Se debe respetar únicamente la luz circular.",
+        "Ninguna de las alternativas es correcta."
+    ],
+    "respuesta": "a"
+},
+{
+    "_id":"9",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "La siguiente señal vertical reglamentaria R-53:",
+    "images": ["static/image/img9.png"],
+    "alternativas": [
+        "Prohíbe estacionar.",
+        "Prohíbe al conductor detener el vehículo dentro del área de la intersección.",
+        "Prohíbe la carga y descarga.",
+        "Prohíbe la circulación de vehículos motorizados"
+    ],
+    "respuesta": "b"
+},
+{
+    "_id":"10",
+    "tipo_materia": "Materias generales",
+    "categoria": "Todas",
+    "tema": "Reglamento de Tránsito y Manual de Dispositivos de Control de Tránsito",
+    "descripcion": "Si llega a una intersección y visualiza elsemáforo con una flecha roja hacia la izquierda y la luz circular verde prendidas al mismo tiempo, la acción correcta es:",
+    "images": [],
+    "alternativas": [
+        "Avanzar en cualquier sentido, ya que la luz circular está en verde.",
+        "Avanzar, pero el giro a la izquierda está prohibido por la flecha roja",
+        "Avanzar  únicamente  hacia  la  izquierda,  pues  continuar  de  frente  está prohibido.",
+        "Ninguna de las alternativas es correcta."
+    ],
+    "respuesta": "b"
+}
+]
