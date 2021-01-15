@@ -3,6 +3,10 @@
 # login
 
 ```
+{
+    "Content-Type: application/json"
+}
+
 POST: {uri}/auth
 
 {
@@ -11,10 +15,25 @@ POST: {uri}/auth
 }
 ```
 
+# user
+
+```
+{
+    "Authorization: JWT <access_token>"
+    "Content-Type: application/json"
+}
+POST: {uri}/api/v1/user
+```
+
 # registro
 
 ```
-POST: {uri}/register
+
+{
+    "Content-Type: application/json"
+}
+
+POST: {uri}/api/v1/register
 
 {
     "username":"myusername",
@@ -25,18 +44,32 @@ POST: {uri}/register
 # preguntas
 
 ```
+{
+    "Content-Type: application/json"
+}
+
 GET: {uri}/api/v1/questions
 ```
 
 # Obtener puntuacion
 
 ```
+{
+    "Authorization: JWT <access_token>"
+    "Content-Type: application/json"
+}
+
 GET {uri}/api/v1/puntuation
 ```
 
 # Guardar puntuacion
 
 ```
+{
+    "Authorization: JWT <access_token>"
+    "Content-Type: application/json"
+}
+
 POST {uri}/api/v1/puntuation
 
 {
