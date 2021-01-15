@@ -70,15 +70,25 @@ def puntuation():
     return {"status_code": "200", "data": data[0]}
 
 
-@app.route("/register", methods=["POST"])
+@app.route("/api/v1/register", methods=["POST"])
 def register():
     data = request.get_json()
     user = mongo.db.users.find_one_or_404({"username": data['username']})
     if(user):
-        return {"status_code": "500", "error": "username is used", "description": "this user is already existed"}
+        return {"status_code": "401", "error": "username is used", "description": "this user is already existed"}
     mongo.db.users.insert(
         {"id": randrange(1000), "username": data['username'], "password": data['password']})
     return {"status_code": "200", "data": request.get_json()}
+
+
+@app.route("/api/v1/user")
+@jwt_required()
+def guser():
+    data = list(mongo.db.users.find({"id": str(current_identity.id)}))
+    if(len(data) > 0):
+        return {"status_code": "200", "data": data[0]}
+    else:
+        return {"status_code": "401", "error": "user is nos exist", "description": "this user has been removed"}
 
 
 @app.route("/index")
