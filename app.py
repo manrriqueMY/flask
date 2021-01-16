@@ -111,7 +111,8 @@ def questions():
 
 @ app.route("/api/v1/leaderboard")
 def leaderboard():
-    data = mongo.db.puntuations.find({}).sort({"puntuacion": -1, "tiempo": 1})
+    data = mongo.db.puntuations.find({}).sort(
+        [("puntuacion", -1), ("tiempo", 1)])
     data = list(data)
     return {"status_code": "200", "data": data}
 
