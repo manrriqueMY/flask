@@ -52,7 +52,7 @@ def gpuntuation():
     if(len(data) > 0):
         return {"status_code": "200", "data": data[0]}
     else:
-        return {"status_code": "200", "data": {"_id": str(current_identity.id), "puntuacion": 0}}
+        return {"status_code": "200", "data": {"_id": str(current_identity.id), "puntuacion": 0, "tiempo": "00:00:00"}}
 
 
 @app.route('/api/v1/puntuation', methods=["POST"])
