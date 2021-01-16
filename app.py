@@ -81,16 +81,17 @@ def register():
         return {"status_code": "401", "error": "username is used", "description": "this user is already existed"}
 
     mongo.db.users.insert(
-        {"id": randrange(1000), "username": data['username'], "password": data['password']})
+        {"id": str(randrange(1000)), "username": data['username'], "password": data['password']})
     return {"status_code": "200", "data": request.get_json()}
 
 
 @app.route("/api/v1/user")
 @jwt_required()
 def guser():
-    data = list(mongo.db.users.find({"id": str(current_identity.id)}))
+    data = mongo.db.users.find({"id": current_identity.id})
+    data = list(data)
     if(len(data) > 0):
-        return {"status_code": "200", "data": data[0]}
+        return {"status_code": "200", "data": {"id": data[0]['id'], "username": data[0]['username'], "password": data[0]['password']}}
     else:
         return {"status_code": "401", "error": "user is nos exist", "description": "this user has been removed"}
 
@@ -103,7 +104,7 @@ def index():
 
 @app.route("/api/v1/questions")
 def questions():
-    data = mongo.db.quetions.find({})
+    data = mongo.db.questions.find({})
     data = list(data)
     return {"status_code": "200", "data": data}
 
