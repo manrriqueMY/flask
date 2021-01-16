@@ -73,6 +73,7 @@ GET {uri}/api/v1/puntuation
 POST {uri}/api/v1/puntuation
 
 {
-    "puntuacion":"0"
+    "puntuacion":"0",
+    "tiempo":"00:00:00"
 }
 ```

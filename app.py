@@ -1,5 +1,5 @@
 from flask import Flask, request, send_from_directory
-#from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
@@ -7,9 +7,9 @@ from random import randrange
 from flask_cors import CORS
 
 app = Flask(__name__, static_url_path='')
-#app.config["MONGO_URI"] = "mongodb://localhost:27017/dbtest"
-#app.config["MONGO_URI"] = "mongodb://root:1PxK1vVvU2EGPgtd@cluster0-shard-00-00.trhtt.mongodb.net:27017,cluster0-shard-00-01.trhtt.mongodb.net:27017,cluster0-shard-00-02.trhtt.mongodb.net:27017/dbtest?ssl=true&replicaSet=atlas-bz5wrp-shard-0&authSource=admin&retryWrites=true&w=majorit"
-#mongo = PyMongo(app)
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/dbtest"
+# app.config["MONGO_URI"] = "mongodb://root:1PxK1vVvU2EGPgtd@cluster0-shard-00-00.trhtt.mongodb.net:27017,cluster0-shard-00-01.trhtt.mongodb.net:27017,cluster0-shard-00-02.trhtt.mongodb.net:27017/dbtest?ssl=true&replicaSet=atlas-bz5wrp-shard-0&authSource=admin&retryWrites=true&w=majorit"
+# mongo = PyMongo(app)
 mongo = MongoClient(
     "mongodb+srv://root:1PxK1vVvU2EGPgtd@cluster0.trhtt.mongodb.net/test?retryWrites=true&w=majority")
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
@@ -63,17 +63,17 @@ def puntuation():
 
     if(len(data) > 0):
         mongo.db.puntuations.update({"_id": str(current_identity.id)}, {
-            "$set": {"puntuacion": puntos["puntuacion"]}})
+            "$set": {"puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"]}})
     else:
         mongo.db.puntuations.insert(
-            {"_id": str(current_identity.id), "puntuacion": puntos["puntuacion"]})
+            {"_id": str(current_identity.id), "puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"]})
         data = [{"_id": str(current_identity.id),
                  "puntuacion": puntos["puntuacion"]}]
 
     return {"status_code": "200", "data": data[0]}
 
 
-@app.route("/api/v1/register", methods=["POST"])
+@ app.route("/api/v1/register", methods=["POST"])
 def register():
     data = request.get_json()
     user = list(mongo.db.users.find({"username": data['username']}))
@@ -85,8 +85,8 @@ def register():
     return {"status_code": "200", "data": request.get_json()}
 
 
-@app.route("/api/v1/user")
-@jwt_required()
+@ app.route("/api/v1/user")
+@ jwt_required()
 def guser():
     data = mongo.db.users.find({"id": current_identity.id})
     data = list(data)
@@ -96,15 +96,22 @@ def guser():
         return {"status_code": "401", "error": "user is nos exist", "description": "this user has been removed"}
 
 
-@app.route("/index")
-@app.route("/")
+@ app.route("/index")
+@ app.route("/")
 def index():
     return {"status_code": "200", "data": {"index": "index"}}
 
 
-@app.route("/api/v1/questions")
+@ app.route("/api/v1/questions")
 def questions():
     data = mongo.db.questions.find({})
+    data = list(data)
+    return {"status_code": "200", "data": data}
+
+
+@ app.route("/api/v1/leaderboard")
+def leaderboard():
+    data = mongo.db.puntuations.find({}).sort({"puntuacion": -1, "tiempo": 1})
     data = list(data)
     return {"status_code": "200", "data": data}
 
