@@ -63,10 +63,10 @@ def puntuation():
 
     if(len(data) > 0):
         mongo.db.puntuations.update({"_id": str(current_identity.id)}, {
-            "$set": {"puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"]}})
+            "$set": {"puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"], "username": str(current_identity.username)}})
     else:
         mongo.db.puntuations.insert(
-            {"_id": str(current_identity.id), "puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"]})
+            {"_id": str(current_identity.id), "puntuacion": puntos["puntuacion"], "tiempo": puntos["tiempo"], "username": str(current_identity.username)})
         data = [{"_id": str(current_identity.id),
                  "puntuacion": puntos["puntuacion"]}]
 
