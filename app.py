@@ -1,5 +1,6 @@
 from flask import Flask, request, send_from_directory
-from flask_pymongo import PyMongo
+#from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
 from random import randrange
@@ -7,8 +8,10 @@ from flask_cors import CORS
 
 app = Flask(__name__, static_url_path='')
 #app.config["MONGO_URI"] = "mongodb://localhost:27017/dbtest"
-app.config["MONGO_URI"] = "mongodb://root:1PxK1vVvU2EGPgtd@cluster0-shard-00-00.trhtt.mongodb.net:27017,cluster0-shard-00-01.trhtt.mongodb.net:27017,cluster0-shard-00-02.trhtt.mongodb.net:27017/dbtest?ssl=true&replicaSet=atlas-bz5wrp-shard-0&authSource=admin&retryWrites=true&w=majorit"
-mongo = PyMongo(app)
+#app.config["MONGO_URI"] = "mongodb://root:1PxK1vVvU2EGPgtd@cluster0-shard-00-00.trhtt.mongodb.net:27017,cluster0-shard-00-01.trhtt.mongodb.net:27017,cluster0-shard-00-02.trhtt.mongodb.net:27017/dbtest?ssl=true&replicaSet=atlas-bz5wrp-shard-0&authSource=admin&retryWrites=true&w=majorit"
+#mongo = PyMongo(app)
+mongo = MongoClient(
+    "mongodb+srv://root:1PxK1vVvU2EGPgtd@cluster0.trhtt.mongodb.net/test?retryWrites=true&w=majority")
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
@@ -29,7 +32,7 @@ class User(object):
 
 
 def authenticate(username, password):
-    user = mongo.db.users.find_one_or_404({"username": username})
+    user = mongo.db.users.find_one({"username": username})
     if user and safe_str_cmp(user['password'].encode('utf-8'), password.encode('utf-8')):
         return User(user['_id'], user['id'], user['username'], user['password'])
 
@@ -38,7 +41,7 @@ def identity(payload):
     print(payload)
     user_id = payload['identity']
     # return userid_table.get(user_id, None)
-    user = mongo.db.users.find_one_or_404({"id": user_id})
+    user = mongo.db.users.find_one({"id": user_id})
     return User(user['_id'], user['id'], user['username'], user['password'])
 
 
@@ -76,6 +79,7 @@ def register():
     user = list(mongo.db.users.find({"username": data['username']}))
     if(len(user) > 0):
         return {"status_code": "401", "error": "username is used", "description": "this user is already existed"}
+
     mongo.db.users.insert(
         {"id": randrange(1000), "username": data['username'], "password": data['password']})
     return {"status_code": "200", "data": request.get_json()}
