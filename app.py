@@ -73,8 +73,8 @@ def puntuation():
 @app.route("/api/v1/register", methods=["POST"])
 def register():
     data = request.get_json()
-    user = mongo.db.users.find_one_or_404({"username": data['username']})
-    if(user):
+    user = list(mongo.db.users.find({"username": data['username']}))
+    if(len(user) > 0):
         return {"status_code": "401", "error": "username is used", "description": "this user is already existed"}
     mongo.db.users.insert(
         {"id": randrange(1000), "username": data['username'], "password": data['password']})
